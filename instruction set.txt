@@ -1,0 +1,262 @@
+; comments
+:label
+there must be no space between ':' and the label name
+
+<type> refers to:
+    byte
+    dbyte
+    qbyte
+    obyte
+
+
+
+<type> <value>
+-----------------------
+
+this doesn't do anything, just puts <value> into the binary
+
+examples:
+byte 123
+dbyte 1000
+
+-----------------------
+
+
+
+move <type> <register> <value/register>
+-----------------------
+
+<type> specifies how many bytes the cpu will read.
+it should only be used with moving values into registers.
+
+examples:
+move byte a 4 ; move 4 into a
+move qbyte a 40000 ; move 40k into a
+move a b ; move b into a
+
+-----------------------
+
+
+
+
+read <type> <register> <address/register>
+-----------------------
+
+<type> is necessary here
+
+examples:
+read byte b 12 ; read byte at address 12 into register b
+read dbyte c 522 ; read 2 bytes at address 522(+1) into register c
+read obyte c d ; read 8 bytes at address in d(+7) into register c 
+
+-----------------------
+
+
+
+
+write <type> <register> <address/register>
+-----------------------
+
+<type> is necessary here
+
+examples:
+write byte b 12 ; write value in b to address 12
+write dbyte c 522 ; write value in c to address 522
+write obyte c d ; write value in c to address stored in d
+
+-----------------------
+
+
+
+push <type> <register/value>
+-----------------------
+
+<type> is necessary here
+
+examples:
+push byte a ; push register a to stack
+push dbyte 122 ; push 122 to stack
+
+-----------------------
+
+
+
+pop <type> <register>
+-----------------------
+
+<type> is necessary here
+
+examples:
+pop dbyte b ; pop stack into b
+
+-----------------------
+
+
+
+jump <label/address/register> <true/false>
+-----------------------
+
+jump to an address or label
+
+if you want to jump based on condition, use <true/false>, otherwise, it can be omitted
+<true/false> is compared to the value in c
+
+examples:
+jump 124 ; jump to address 124
+jump a ; jump to address stored in a
+jump label1 ; jump to where label1 is
+jump label1 true ; jump to where label1 is if value in c is 1 (true)
+jump label1 false ; jump to where label1 is if value in c is 0 (false)
+
+-----------------------
+
+
+ALU operations usually look like:
+a <operator> b = c
+
+
+add
+-----------------------
+
+inputs are a & b and result is in c
+
+examples:
+move byte a 5
+move byte b 2
+add
+; c == 7
+
+-----------------------
+
+
+
+
+sub
+-----------------------
+
+inputs are a & b and result is in c
+
+examples:
+move byte a 5
+move byte b 2
+sub
+; c == 3
+
+-----------------------
+
+
+
+mul
+-----------------------
+
+inputs are a & b and result is in c
+
+examples:
+move byte a 5
+move byte b 2
+mul
+; c == 10
+
+-----------------------
+
+
+
+div
+-----------------------
+
+inputs are a & b and result is in c while remainder is in d
+
+examples:
+move byte a 5
+move byte b 2
+add
+; c == 2
+; d == 1
+
+-----------------------
+
+
+
+equal
+-----------------------
+
+inputs are a & b and result is in c
+
+examples:
+move byte a 5
+move byte b 5
+equal
+; c == 1
+
+-----------------------
+
+
+
+
+less
+-----------------------
+
+inputs are a & b and result is in c
+
+examples:
+move byte a 2
+move byte b 5
+less
+; c == 1
+
+-----------------------
+
+
+not
+-----------------------
+
+input is a, result is in c
+
+examples:
+move byte a 5
+not
+; c == -6 or c == 250 depending on if you read it as signed or not
+
+-----------------------
+
+
+and
+-----------------------
+
+inputs are a & b, result is in c
+
+examples:
+move byte a 5
+move byte b 12
+and
+; c == 4
+
+-----------------------
+
+
+or
+-----------------------
+
+inputs are a & b, result is in c
+
+examples:
+move byte a 5
+move byte b 12
+or
+; c == 13
+
+-----------------------
+
+
+xor
+-----------------------
+
+inputs are a & b, result is in c
+
+examples:
+move byte a 5
+move byte b 12
+xor
+; c == 9
+
+-----------------------

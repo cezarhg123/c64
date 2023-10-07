@@ -1,0 +1,87 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'c64'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=c64",
+                    "--package=c64"
+                ],
+                "filter": {
+                    "name": "c64",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "out.bin"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'c64'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=c64",
+                    "--package=c64"
+                ],
+                "filter": {
+                    "name": "c64",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'assembler'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=assembler",
+                    "--package=c64"
+                ],
+                "filter": {
+                    "name": "assembler",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "test.asm",
+                "test.bin"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'assembler'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=assembler",
+                    "--package=c64"
+                ],
+                "filter": {
+                    "name": "assembler",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
