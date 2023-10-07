@@ -144,7 +144,7 @@ fn main() {
 
     // pass 3, overwrite label addresses
     for mentioned_label in mentioned_labels {
-        let address = found_labels.get(&mentioned_label.0).unwrap();
+        let address = found_labels.get(&mentioned_label.0).expect(format!("label {} is used but never declared", mentioned_label.0).as_str());
         let address_bytes = address.to_be_bytes();
 
         out_file.seek_write(
